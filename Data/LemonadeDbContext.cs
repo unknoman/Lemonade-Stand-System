@@ -12,7 +12,19 @@ namespace Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-        }
+            //-----Keys 
+            modelBuilder.Entity<ClientOrder>().HasKey(co => co.id);
+            modelBuilder.Entity<OrderDetail>().HasKey(od => od.id);
+
+            //------------ Relationship
+            modelBuilder.Entity<ClientOrder>().HasMany(co => co.OrderDetails)
+                .WithOne(co => co.clientOrder)
+                .HasForeignKey(co => co.id);
+
+            //----------------
+            base.OnModelCreating(modelBuilder);
 
         }
+
+    }
 }
