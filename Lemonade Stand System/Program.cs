@@ -1,5 +1,6 @@
 using Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,12 +11,24 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+
 builder.Services.AddDbContext<LemonadeDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectionString"));
-}
-);
+});
+
+
 var app = builder.Build();
+
+//-----------------
+/*
+using (var scope = app.Services.CreateScope())
+{
+    LemonadeDbContext lemonadeDbContext = scope.ServiceProvider.GetRequiredService<LemonadeDbContext>();
+    // lemonadeDbContext.Database.EnsureCreated();
+  
+} */
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

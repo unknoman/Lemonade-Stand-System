@@ -6,6 +6,12 @@ namespace Data
     public class LemonadeDbContext : DbContext
     {
 
+
+        public LemonadeDbContext(DbContextOptions<LemonadeDbContext> options)
+            : base(options)
+        {
+        }
+
         public DbSet<ClientOrder> ClientOrders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
 
@@ -19,7 +25,7 @@ namespace Data
             //------------ Relationship
             modelBuilder.Entity<ClientOrder>().HasMany(co => co.OrderDetails)
                 .WithOne(co => co.clientOrder)
-                .HasForeignKey(co => co.id);
+                .HasForeignKey(od => od.id);
 
             //----------------
             base.OnModelCreating(modelBuilder);

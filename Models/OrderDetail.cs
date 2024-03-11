@@ -9,6 +9,7 @@ namespace Models
         public float unityPrice { get; set; }
         public float quantity { get; set; }
 
+
         public ClientOrder clientOrder { get; set; } = new ClientOrder();
 
     }
