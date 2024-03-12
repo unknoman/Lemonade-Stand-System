@@ -23,9 +23,13 @@ namespace Data
             modelBuilder.Entity<OrderDetail>().HasKey(od => od.id);
 
             //------------ Relationship
-            modelBuilder.Entity<ClientOrder>().HasMany(co => co.OrderDetails)
+            modelBuilder.Entity<ClientOrder>().HasMany(co => co.orderDetails)
                 .WithOne(co => co.clientOrder)
-                .HasForeignKey(od => od.id);
+                .HasForeignKey(od => od.order);
+
+
+
+
 
             //----------------
             base.OnModelCreating(modelBuilder);

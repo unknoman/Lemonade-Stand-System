@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(LemonadeDbContext))]
-    [Migration("20240311093626_Initial2")]
-    partial class Initial2
+    [Migration("20240312052158_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -44,7 +44,10 @@ namespace Data.Migrations
             modelBuilder.Entity("Models.OrderDetail", b =>
                 {
                     b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
                     b.Property<int>("order")
                         .HasColumnType("int");
@@ -60,6 +63,8 @@ namespace Data.Migrations
 
                     b.HasKey("id");
 
+                    b.HasIndex("order");
+
                     b.ToTable("OrderDetails");
                 });
 
@@ -67,7 +72,7 @@ namespace Data.Migrations
                 {
                     b.HasOne("Models.ClientOrder", "clientOrder")
                         .WithMany("OrderDetails")
-                        .HasForeignKey("id")
+                        .HasForeignKey("order")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

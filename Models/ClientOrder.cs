@@ -4,6 +4,6 @@
     {
         public int id { get; set; }
         public DateTime date { get; set; }
-        public List<OrderDetail>? OrderDetails { get; set; }
+        public List<OrderDetail>? orderDetails { get; set; }
     }
 }
