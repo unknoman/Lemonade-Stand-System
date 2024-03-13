@@ -1,0 +1,1 @@
+Execute the `update-database` command in the Package Manager Console, targeting the data layer project. The connection string is located in the `appsettings.json` file, and SQL Server is used as the database provider.
