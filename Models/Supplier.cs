@@ -13,7 +13,10 @@ namespace Models
 
         public int tel { get; set; }
 
+        public int suppliesOrder { get; set; }
         public string? email { get; set; }
+
+        public List<SuppliesOrder>? oSuppliesO { get; set; }
 
     }
 }

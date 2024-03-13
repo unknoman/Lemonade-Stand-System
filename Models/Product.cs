@@ -17,6 +17,8 @@ namespace Models
         public int type { get; set; }
         public ProductType productType { get; set; } = new ProductType();
 
+        public List<OrderDetail>? orderDetails { get; set; }
+
 
     }
 }

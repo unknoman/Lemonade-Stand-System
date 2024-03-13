@@ -14,5 +14,7 @@ namespace Models
         public SuppliesOrder suppliesOrder { get; set; } = new SuppliesOrder();
         public ClientOrder clientOrder { get; set; } = new ClientOrder();
 
+        public Product oProduct { get; set; } = new Product();
+
     }
 }
