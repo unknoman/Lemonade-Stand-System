@@ -11,7 +11,7 @@ namespace Models
         public float unityPrice { get; set; }
         public float quantity { get; set; }
 
-        public SupplierOrder supplierOrder { get; set; } = new SupplierOrder();
+        public SuppliesOrder suppliesOrder { get; set; } = new SuppliesOrder();
         public ClientOrder clientOrder { get; set; } = new ClientOrder();
 
     }

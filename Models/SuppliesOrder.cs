@@ -1,7 +1,7 @@
 ﻿
 namespace Models
 {
-    public class SupplierOrder
+    public class SuppliesOrder
     {
         public int id { get; set; }
         public int suplier { get; set; }
