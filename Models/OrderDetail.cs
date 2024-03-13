@@ -7,7 +7,7 @@ namespace Models
         public int order { get; set; }
         public int product { get; set; }
 
-        public int supplier { get; set; }
+        public int supplies { get; set; }
         public float unityPrice { get; set; }
         public float quantity { get; set; }
 
