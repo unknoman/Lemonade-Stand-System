@@ -16,6 +16,14 @@ namespace Data
         public DbSet<ClientOrder> ClientOrders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
 
+        public DbSet<Product> Products { get; set; }
+
+        public DbSet<ProductType> ProductTypes { get; set; }
+
+        public DbSet<Supplier> Suppliers { get; set;  } 
+
+        public DbSet<SuppliesOrder> SuppliesOrders { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
@@ -58,7 +66,7 @@ namespace Data
 
         }
 
-
+        //--- Convertion
         protected override void ConfigureConventions(ModelConfigurationBuilder builder)
         {
             builder.Properties<DateOnly>()

@@ -5,6 +5,8 @@ using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -13,10 +15,19 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
+
+
+
 builder.Services.AddDbContext<LemonadeDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectionString"));
 });
+
+// Registered services 
+builder.Services.AddScoped<ProductData>();
+//---------------
+
+
 
 
 var app = builder.Build();
