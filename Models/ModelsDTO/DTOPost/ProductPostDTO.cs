@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Models.ModelsDTO
+namespace Models.ModelsDTO.DTOPost
 {
-    public class ProductDTO
+     public class ProductPostDTO
     {
         public string? name { get; set; }
         public float unityPrice { get; set; }
@@ -16,6 +16,5 @@ namespace Models.ModelsDTO
         public string? unitMeasure { get; set; }
 
         public int type { get; set; }
-        public ProductTypeDTO productType { get; set; } = new ProductTypeDTO();
     }
 }

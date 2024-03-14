@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Models.ModelsDTO
+namespace Models.ModelsDTO.DTOGet
 {
     public class OrderDetailDTO
     {

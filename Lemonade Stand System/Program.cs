@@ -22,6 +22,15 @@ builder.Services.AddSwaggerGen();
 
 //------- Configurations
 
+//---- logger
+
+builder.Services.AddLogging(logging =>
+{
+    logging.ClearProviders(); 
+    logging.AddConsole(); 
+    logging.AddDebug(); 
+});
+
 //-------------- AutoMap
 var config = new MapperConfiguration(cfg =>
 {
@@ -48,6 +57,7 @@ builder.Services.AddControllers().AddJsonOptions(x =>
 builder.Services.AddScoped<ProductData>();
 builder.Services.AddScoped<ProductBusiness>();
 builder.Services.AddSingleton<IMapper>(mapper);
+
 //---------------
 
 

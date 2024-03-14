@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Data;
 using Models;
-using Models.ModelsDTO;
+using Models.ModelsDTO.DTOGet;
 
 namespace Business
 {

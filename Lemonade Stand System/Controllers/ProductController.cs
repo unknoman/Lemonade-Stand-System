@@ -1,7 +1,7 @@
 using Business;
 using Microsoft.AspNetCore.Mvc;
 using Models;
-using Models.ModelsDTO;
+using Models.ModelsDTO.DTOGet;
 
 namespace Lemonade_Stand_System.Controllers
 {
@@ -19,10 +19,10 @@ namespace Lemonade_Stand_System.Controllers
 
         [HttpGet(Name = "GetProduct")]
 
-        public async Task<List<ProductDTO>> getProduct(int producto)
+        public async Task<List<ProductDTO>> getProduct(int product)
         {
 
-            List<ProductDTO> products = await _productBusiness.getProduct(producto);
+            List<ProductDTO> products = await _productBusiness.getProduct(product);
             return products;
         }
 
