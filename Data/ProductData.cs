@@ -17,7 +17,7 @@ namespace Data
        public async Task<List<Product>> getProduct()
         {
 
-            List<Product> products = await _lemonadeDbContext.Products.ToListAsync();
+            List<Product> products = await _lemonadeDbContext.Products.Include(p => p.productType).ToListAsync();
             return products;
 
         }

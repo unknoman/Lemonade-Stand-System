@@ -58,9 +58,28 @@ namespace Data
                 .HasForeignKey(s => s.supplier);
 
 
+            //------AutoIncrement
 
- 
-       
+            modelBuilder.Entity<Product>()
+                .Property(p => p.id)
+                .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<ProductType>()
+               .Property(p => p.id)
+               .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<ClientOrder>()
+               .Property(p => p.id)
+               .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<SuppliesOrder>()
+               .Property(p => p.id)
+               .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<Supplier>()
+               .Property(p => p.id)
+               .ValueGeneratedOnAdd();
+
             //----------------
             base.OnModelCreating(modelBuilder);
 

@@ -1,8 +1,13 @@
+using AutoMapper;
 using Business;
+using Business.Resources;
 using Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
+using Models;
+using System.Text.Json.Serialization;
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,18 +20,34 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//------- Configurations
+
+//-------------- AutoMap
+var config = new MapperConfiguration(cfg =>
+{
+    cfg.AddProfile<MappingProfile>();
+});
+
+var mapper = config.CreateMapper();
 
 
-
-
+// -- ConnectionString
 builder.Services.AddDbContext<LemonadeDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectionString"));
 });
 
+//----Cycles
+builder.Services.AddControllers().AddJsonOptions(x =>
+                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
+
+//-----------
+
 // Registered services 
 builder.Services.AddScoped<ProductData>();
 builder.Services.AddScoped<ProductBusiness>();
+builder.Services.AddSingleton<IMapper>(mapper);
 //---------------
 
 

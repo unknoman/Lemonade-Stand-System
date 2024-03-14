@@ -1,18 +1,22 @@
-﻿using Data;
+﻿using AutoMapper;
+using Data;
 using Models;
+using Models.ModelsDTO;
 
 namespace Business
 {
     public class ProductBusiness
     {
         private readonly ProductData _productData;
-        public ProductBusiness(ProductData productData) {
+        private readonly IMapper _mapper;
+        public ProductBusiness(ProductData productData, IMapper mapper) {
         
             _productData = productData;
-        
+            _mapper = mapper;
+
         }
 
-        public async Task<List<Product>> getProduct(int producto)
+        public async Task<List<ProductDTO>> getProduct(int producto)
         {
 
             List<Product> products = await _productData.getProduct();
@@ -20,7 +24,8 @@ namespace Business
             {
                 products.Where(p => p.id == producto);
             }
-            return products;
+            List<ProductDTO> productDTOs = _mapper.Map<List<ProductDTO>>(products);
+            return productDTOs;
         }
 
 

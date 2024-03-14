@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(LemonadeDbContext))]
-    [Migration("20240314055029_InitialMigration")]
+    [Migration("20240314064251_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
