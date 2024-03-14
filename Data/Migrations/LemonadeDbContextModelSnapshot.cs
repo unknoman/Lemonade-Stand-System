@@ -99,7 +99,7 @@ namespace Data.Migrations
 
                     b.HasIndex("type");
 
-                    b.ToTable("Product");
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Models.ProductType", b =>
@@ -118,7 +118,7 @@ namespace Data.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("ProductType");
+                    b.ToTable("ProductTypes");
                 });
 
             modelBuilder.Entity("Models.Supplier", b =>
@@ -143,7 +143,7 @@ namespace Data.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Supplier");
+                    b.ToTable("Suppliers");
                 });
 
             modelBuilder.Entity("Models.SuppliesOrder", b =>
@@ -164,7 +164,7 @@ namespace Data.Migrations
 
                     b.HasIndex("supplier");
 
-                    b.ToTable("SuppliesOrder");
+                    b.ToTable("SuppliesOrders");
                 });
 
             modelBuilder.Entity("Models.OrderDetail", b =>

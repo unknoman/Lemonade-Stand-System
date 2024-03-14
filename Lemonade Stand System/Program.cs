@@ -1,3 +1,4 @@
+using Business;
 using Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
@@ -25,6 +26,7 @@ builder.Services.AddDbContext<LemonadeDbContext>(options =>
 
 // Registered services 
 builder.Services.AddScoped<ProductData>();
+builder.Services.AddScoped<ProductBusiness>();
 //---------------
 
 

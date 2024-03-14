@@ -8,7 +8,7 @@ namespace Data
     {
         private readonly LemonadeDbContext _lemonadeDbContext;
 
-        ProductData(LemonadeDbContext lemononadeDbContext)
+        public ProductData(LemonadeDbContext lemononadeDbContext)
         {
             _lemonadeDbContext = lemononadeDbContext;
         }

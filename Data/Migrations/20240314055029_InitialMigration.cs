@@ -25,7 +25,7 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProductType",
+                name: "ProductTypes",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "int", nullable: false)
@@ -35,11 +35,11 @@ namespace Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductType", x => x.id);
+                    table.PrimaryKey("PK_ProductTypes", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Supplier",
+                name: "Suppliers",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "int", nullable: false)
@@ -51,11 +51,11 @@ namespace Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Supplier", x => x.id);
+                    table.PrimaryKey("PK_Suppliers", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Product",
+                name: "Products",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "int", nullable: false)
@@ -68,17 +68,17 @@ namespace Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Product", x => x.id);
+                    table.PrimaryKey("PK_Products", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Product_ProductType_type",
+                        name: "FK_Products_ProductTypes_type",
                         column: x => x.type,
-                        principalTable: "ProductType",
+                        principalTable: "ProductTypes",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "SuppliesOrder",
+                name: "SuppliesOrders",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "int", nullable: false)
@@ -88,11 +88,11 @@ namespace Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SuppliesOrder", x => x.id);
+                    table.PrimaryKey("PK_SuppliesOrders", x => x.id);
                     table.ForeignKey(
-                        name: "FK_SuppliesOrder_Supplier_supplier",
+                        name: "FK_SuppliesOrders_Suppliers_supplier",
                         column: x => x.supplier,
-                        principalTable: "Supplier",
+                        principalTable: "Suppliers",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -119,15 +119,15 @@ namespace Data.Migrations
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_OrderDetails_Product_product",
+                        name: "FK_OrderDetails_Products_product",
                         column: x => x.product,
-                        principalTable: "Product",
+                        principalTable: "Products",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_OrderDetails_SuppliesOrder_supplies",
+                        name: "FK_OrderDetails_SuppliesOrders_supplies",
                         column: x => x.supplies,
-                        principalTable: "SuppliesOrder",
+                        principalTable: "SuppliesOrders",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -148,13 +148,13 @@ namespace Data.Migrations
                 column: "supplies");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Product_type",
-                table: "Product",
+                name: "IX_Products_type",
+                table: "Products",
                 column: "type");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SuppliesOrder_supplier",
-                table: "SuppliesOrder",
+                name: "IX_SuppliesOrders_supplier",
+                table: "SuppliesOrders",
                 column: "supplier");
         }
 
@@ -168,16 +168,16 @@ namespace Data.Migrations
                 name: "ClientOrders");
 
             migrationBuilder.DropTable(
-                name: "Product");
+                name: "Products");
 
             migrationBuilder.DropTable(
-                name: "SuppliesOrder");
+                name: "SuppliesOrders");
 
             migrationBuilder.DropTable(
-                name: "ProductType");
+                name: "ProductTypes");
 
             migrationBuilder.DropTable(
-                name: "Supplier");
+                name: "Suppliers");
         }
     }
 }
