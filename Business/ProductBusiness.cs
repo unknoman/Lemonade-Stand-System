@@ -16,13 +16,13 @@ namespace Business
 
         }
 
-        public async Task<List<ProductDTO>> getProduct(int producto)
+        public async Task<List<ProductDTO>> getProduct(int productId)
         {
 
             List<Product> products = await _productData.getProduct();
-            if(producto != 0)
+            if(productId != 0)
             {
-                products.Where(p => p.id == producto);
+               products = products.Where(p => p.id == productId).ToList();
             }
             List<ProductDTO> productDTOs = _mapper.Map<List<ProductDTO>>(products);
             return productDTOs;

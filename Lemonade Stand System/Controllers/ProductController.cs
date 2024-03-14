@@ -19,11 +19,11 @@ namespace Lemonade_Stand_System.Controllers
 
         [HttpGet(Name = "GetProduct")]
 
-        public async Task<List<ProductDTO>> getProduct(int product)
+        public async Task<ActionResult<List<ProductDTO>>> getProduct(int product)
         {
 
             List<ProductDTO> products = await _productBusiness.getProduct(product);
-            return products;
+            return products != null && products.Any() ? Ok(products) : NotFound();
         }
 
 
