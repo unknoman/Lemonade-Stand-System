@@ -13,9 +13,8 @@ namespace Business.Resources
     {
             public MappingProfile()
             {
-                CreateMap<Product, ProductDTO>();
+            CreateMap<Product, ProductDTO>();
             CreateMap<ProductType, ProductTypeDTO>();
-            // Define otros mapas según sea necesario
         }
         
     }
