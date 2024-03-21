@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Models.ModelsDTO.DTOGet
 {
-    public class ClientOrderDTO
+    public class ClientOrderGetDTO
     {
         public int id { get; set; }
         public DateTime date { get; set; }
 
-        public List<OrderDetailDTO>? orderDetails { get; set; }
+        public List<OrderDetailGetDTO>? orderDetails { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models.ModelsDTO.DTOGet
 {
-    public class OrderDetailDTO
+    public class OrderDetailGetDTO
     {
 
         public int order { get; set; }
@@ -16,9 +16,9 @@ namespace Models.ModelsDTO.DTOGet
         public float unityPrice { get; set; }
         public float quantity { get; set; }
 
-        public ClientOrderDTO clientOrder { get; set; } = new ClientOrderDTO();
+        public ClientOrderGetDTO clientOrder { get; set; } = new ClientOrderGetDTO();
 
-        public ProductDTO oProduct { get; set; } = new ProductDTO();
+        public ProductGetDTO oProduct { get; set; } = new ProductGetDTO();
 
     }
 }

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Models;
 using Models.ModelsDTO.DTOGet;
+using Models.ModelsDTO.DTOPost;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +14,9 @@ namespace Business.Resources
     {
             public MappingProfile()
             {
-            CreateMap<Product, ProductDTO>();
-            CreateMap<ProductType, ProductTypeDTO>();
+            CreateMap<Product, ProductGetDTO>();
+            CreateMap<ProductType, ProductTypeGetDTO>().ReverseMap();
+            CreateMap<ProductType, ProductTypePostDTO>().ReverseMap();
         }
         
     }

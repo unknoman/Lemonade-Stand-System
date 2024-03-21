@@ -44,21 +44,11 @@ namespace Data
         }
 
 
-        public async Task<bool> postPrudctType(ProductType productType)
+        public async Task<ProductType?> postPrudctType(ProductType productType)
         {
-
-            try
-            {
-                _lemonadeDbContext.ProductTypes.Add(productType);
-                await _lemonadeDbContext.SaveChangesAsync();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError("Error: ", ex);
-                return false;
-            }
-
+            _lemonadeDbContext.ProductTypes.Add(productType);
+            int countProductType = await _lemonadeDbContext.SaveChangesAsync();
+            return countProductType > 0 ? productType :  null;
         }
 
 

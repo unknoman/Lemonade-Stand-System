@@ -1,7 +1,9 @@
 using Business;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
 using Models;
 using Models.ModelsDTO.DTOGet;
+using Models.ModelsDTO.DTOPost;
 
 namespace Lemonade_Stand_System.Controllers
 {
@@ -19,11 +21,20 @@ namespace Lemonade_Stand_System.Controllers
 
         [HttpGet(Name = "GetProduct")]
 
-        public async Task<ActionResult<List<ProductDTO>>> getProduct(int product)
+        public async Task<ActionResult<List<ProductGetDTO>>> getProduct(int product)
         {
 
-            List<ProductDTO> products = await _productBusiness.getProduct(product);
+            List<ProductGetDTO> products = await _productBusiness.getProduct(product);
             return products != null && products.Any() ? Ok(products) : NotFound();
+        }
+
+
+        [HttpPost ("productType", Name = "ProductType")]
+        public async Task<ActionResult<ProductTypePostDTO>> postPrudctType(ProductTypePostDTO productType)
+        {
+
+            var productTypeRes = await _productBusiness.postPrudctType(productType);
+            return productTypeRes == null ? BadRequest() :  CreatedAtAction(nameof(getProduct), new { id = productTypeRes.id }, productTypeRes); 
         }
 
 
