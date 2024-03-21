@@ -29,12 +29,12 @@ namespace Lemonade_Stand_System.Controllers
         }
 
 
-        [HttpPost ("productType", Name = "ProductType")]
+        [HttpPost ("productType", Name = "productType")]
         public async Task<ActionResult<ProductTypePostDTO>> postPrudctType(ProductTypePostDTO productType)
         {
 
             var productTypeRes = await _productBusiness.postPrudctType(productType);
-            return productTypeRes == null ? BadRequest() :  CreatedAtAction(nameof(getProduct), new { id = productTypeRes.id }, productTypeRes); 
+            return productTypeRes == null ? BadRequest() : StatusCode(201, productTypeRes);
         }
 
 
