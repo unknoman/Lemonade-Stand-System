@@ -26,17 +26,31 @@ namespace Business
                products = products.Where(p => p.id == productId).ToList();
             }
             List<ProductGetDTO> productDTOs = _mapper.Map<List<ProductGetDTO>>(products);
+            if(productDTOs.Count == 0 && productId != 0)
+                throw new KeyNotFoundException("Product not found with the specified ID.");
             return productDTOs;
         }
 
 
-        public async Task<ProductTypeGetDTO?> postPrudctType(ProductTypePostDTO productType)
+        public async Task<ProductTypeGetDTO?> postProductType(ProductTypePostDTO productType)
         {
            ProductType product = _mapper.Map<ProductType>(productType);
-           var responseProduct = await _productData.postPrudctType(product);
+           var responseProduct = await _productData.postProductType(product);
            ProductTypeGetDTO productTypePostDTO = _mapper.Map<ProductTypeGetDTO>(responseProduct);
            return productTypePostDTO;
         }
+
+        public async Task<ProductPostDTO?> postProduct(ProductPostDTO oProduct)
+        {
+            ProductType? productType = await _productData.getProductType(oProduct.type);
+            if (productType == null) throw new KeyNotFoundException("You must enter a valid product type.");
+            Product product = _mapper.Map<Product>(oProduct);
+            product.productType = productType;
+            var responseProduct = await _productData.postProduct(product);
+            ProductPostDTO productPostDTO = _mapper.Map<ProductPostDTO>(responseProduct);
+            return productPostDTO;
+        }
+
 
     }
 }

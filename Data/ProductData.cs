@@ -26,31 +26,27 @@ namespace Data
         }
 
 
-        public async Task<bool> postPrudct(Product product)
+        public async Task<Product?> postProduct(Product product)
+        
         {
-
-            try
-            {
-                _lemonadeDbContext.Products.Add(product);
-                await _lemonadeDbContext.SaveChangesAsync();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError("Error: ", ex);
-                return false;
-            }
-
+             _lemonadeDbContext.Products.Add(product);
+           int changes =  await _lemonadeDbContext.SaveChangesAsync();
+            return changes > 0 ? product : null;
         }
 
 
-        public async Task<ProductType?> postPrudctType(ProductType productType)
+        public async Task<ProductType?> postProductType(ProductType productType)
         {
             _lemonadeDbContext.ProductTypes.Add(productType);
             int countProductType = await _lemonadeDbContext.SaveChangesAsync();
             return countProductType > 0 ? productType :  null;
         }
 
+        public async Task<ProductType?> getProductType(int idProductType)
+        {
+            ProductType? productType = await _lemonadeDbContext.ProductTypes.FindAsync(idProductType);
+            return productType;
+        }
 
 
 

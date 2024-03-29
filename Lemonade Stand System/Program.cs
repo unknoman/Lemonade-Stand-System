@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Models;
 using System.Text.Json.Serialization;
 using System.Text.Json;
+using Lemonade_Stand_System.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -75,6 +76,7 @@ using (var scope = app.Services.CreateScope())
 } */
 
 // Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -84,6 +86,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+app.useErrorMiddleware();
 
 app.MapControllers();
 

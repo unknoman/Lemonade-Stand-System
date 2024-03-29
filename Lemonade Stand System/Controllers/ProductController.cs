@@ -23,20 +23,24 @@ namespace Lemonade_Stand_System.Controllers
 
         public async Task<ActionResult<List<ProductGetDTO>>> getProduct(int product)
         {
-
-            List<ProductGetDTO> products = await _productBusiness.getProduct(product);
-            return products != null && products.Any() ? Ok(products) : NotFound();
+            return Ok(await _productBusiness.getProduct(product));
         }
 
 
         [HttpPost ("productType", Name = "productType")]
-        public async Task<ActionResult<ProductTypePostDTO>> postPrudctType(ProductTypePostDTO productType)
+        public async Task<ActionResult<ProductTypePostDTO>> postProductType(ProductTypePostDTO productType)
         {
-
-            var productTypeRes = await _productBusiness.postPrudctType(productType);
+            var productTypeRes = await _productBusiness.postProductType(productType);
             return productTypeRes == null ? BadRequest() : StatusCode(201, productTypeRes);
         }
 
+
+
+        [HttpPost("productPost", Name = "productPost")]
+        public async Task<ActionResult<ProductPostDTO>> postProduct(ProductPostDTO product)
+        {
+         return StatusCode(201, await _productBusiness.postProduct(product));
+        }
 
     }
 }

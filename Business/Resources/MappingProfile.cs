@@ -17,6 +17,8 @@ namespace Business.Resources
             CreateMap<Product, ProductGetDTO>();
             CreateMap<ProductType, ProductTypeGetDTO>().ReverseMap();
             CreateMap<ProductType, ProductTypePostDTO>().ReverseMap();
+            CreateMap<ProductGetDTO, ProductPostDTO>().ReverseMap();
+            CreateMap<ProductPostDTO, Product>().ReverseMap();
         }
         
     }
