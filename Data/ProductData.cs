@@ -1,7 +1,7 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using Models; // commit test
+using Models;
 namespace Data
 {
     public class ProductData
