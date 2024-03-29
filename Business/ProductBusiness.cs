@@ -3,6 +3,7 @@ using Data;
 using Models;
 using Models.ModelsDTO.DTOGet;
 using Models.ModelsDTO.DTOPost;
+using System.ComponentModel.DataAnnotations;
 
 namespace Business
 {
@@ -43,7 +44,7 @@ namespace Business
         public async Task<ProductPostDTO?> postProduct(ProductPostDTO oProduct)
         {
             ProductType? productType = await _productData.getProductType(oProduct.type);
-            if (productType == null) throw new KeyNotFoundException("You must enter a valid product type.");
+            if (productType == null) throw new ValidationException("You must enter a valid product type.");
             Product product = _mapper.Map<Product>(oProduct);
             product.productType = productType;
             var responseProduct = await _productData.postProduct(product);

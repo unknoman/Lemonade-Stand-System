@@ -25,17 +25,17 @@ namespace Lemonade_Stand_System.Middleware
                 await _next(context);
             } catch (Exception error)
             {
-                var responseModel = new Responses<string>(){ success = false, message = error.Message};
+                var responseModel = new Responses<string>(){ success = false, message = error?.Message};
 
                 switch (error)
                 {
                     case KeyNotFoundException e:
                        response.StatusCode = (int)HttpStatusCode.NotFound;
-                        responseModel.message = e.Message;
                         break;
                     case ValidationException e:
                         response.StatusCode = (int)HttpStatusCode.BadRequest;
-                        responseModel.message = e.Message;
+                        responseModel.message = "Validation errors";
+                        responseModel.errors = new List<string> { e.Message };
                         break;
                     default:
 
