@@ -13,10 +13,10 @@ namespace Models.ModelsDTO.DTOPost
         [Required(ErrorMessage = "This field is required")]
         public float stock { get; set; }
 
-        [Required(ErrorMessage = "This field is required")]
+     [Required(ErrorMessage = "This field is required")]
         public string? unitMeasure { get; set; }
 
-        [Required(ErrorMessage = "This field is required")]
+       [Required(ErrorMessage = "This field is required")]
         public int type { get; set; }
     }
 }

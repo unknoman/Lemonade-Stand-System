@@ -9,6 +9,7 @@ using Models;
 using System.Text.Json.Serialization;
 using System.Text.Json;
 using Lemonade_Stand_System.Extensions;
+using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -58,7 +59,7 @@ builder.Services.AddControllers().AddJsonOptions(x =>
 builder.Services.AddScoped<ProductData>();
 builder.Services.AddScoped<ProductBusiness>();
 builder.Services.AddSingleton<IMapper>(mapper);
-
+builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 //---------------
 
 
@@ -82,6 +83,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseRouting();
+
+
+
 
 app.UseHttpsRedirection();
 

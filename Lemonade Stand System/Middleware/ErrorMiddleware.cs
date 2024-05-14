@@ -1,8 +1,8 @@
 ﻿using Azure;
 using Models.ModelsResources;
-using System.ComponentModel.DataAnnotations;
 using System.Net;
 using System.Text.Json;
+using System.ComponentModel.DataAnnotations;
 
 namespace Lemonade_Stand_System.Middleware
 
@@ -35,7 +35,7 @@ namespace Lemonade_Stand_System.Middleware
                     case ValidationException e:
                         response.StatusCode = (int)HttpStatusCode.BadRequest;
                         responseModel.message = "Validation errors";
-                        responseModel.errors = new List<string> { e.Message };
+                        responseModel.errors.Add (e.Message);
                         break;
                     default:
 
