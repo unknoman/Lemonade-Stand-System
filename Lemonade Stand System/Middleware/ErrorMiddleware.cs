@@ -16,6 +16,7 @@ namespace Lemonade_Stand_System.Middleware
             _next = next;
         }
 
+
         public async Task Invoke(HttpContext context)
         {
             var response = context.Response;
@@ -25,17 +26,19 @@ namespace Lemonade_Stand_System.Middleware
                 await _next(context);
             } catch (Exception error)
             {
-                var responseModel = new Responses<string>(){ success = false, message = error?.Message};
+                var responseModel = new Responses<string>(){ success = false, message = error?.Message, errors = new List<string>() };
 
                 switch (error)
                 {
                     case KeyNotFoundException e:
                        response.StatusCode = (int)HttpStatusCode.NotFound;
+                       responseModel.message = "Not Found";
+                        responseModel.errors?.Add(e.Message);
+
                         break;
                     case ValidationException e:
                         response.StatusCode = (int)HttpStatusCode.BadRequest;
                         responseModel.message = "Validation errors";
-                        responseModel.errors.Add (e.Message);
                         break;
                     default:
 

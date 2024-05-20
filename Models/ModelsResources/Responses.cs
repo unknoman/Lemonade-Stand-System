@@ -9,11 +9,6 @@ namespace Models.ModelsResources
     public class Responses<T> 
     {
         public Responses() { }
-        public Responses(T Data, string Message) { 
-         success= true;
-         message = Message;
-         data = Data;
-        }
 
         public Responses(string Message)
         {
@@ -21,13 +16,12 @@ namespace Models.ModelsResources
             message = Message;
         }
 
+
         public bool? success { get; set; }
 
         public string? message { get; set; }
 
         public List<string>? errors { get; set; }
-
-        public T? data { get; set; }
 
 
     }

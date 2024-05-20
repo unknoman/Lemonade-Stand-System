@@ -10,6 +10,10 @@ using System.Text.Json.Serialization;
 using System.Text.Json;
 using Lemonade_Stand_System.Extensions;
 using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using Models.ModelsResources;
+using System.Net;
+using Data.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +21,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -58,8 +62,9 @@ builder.Services.AddControllers().AddJsonOptions(x =>
 // Registered services 
 builder.Services.AddScoped<ProductData>();
 builder.Services.AddScoped<ProductBusiness>();
+builder.Services.AddScoped(typeof(IDataGeneric<>), typeof(DataGeneric<>));
+builder.Services.AddScoped<ClientBusiness>();
 builder.Services.AddSingleton<IMapper>(mapper);
-builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 //---------------
 
 
