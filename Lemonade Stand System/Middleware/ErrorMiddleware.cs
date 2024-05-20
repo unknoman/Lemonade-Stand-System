@@ -32,21 +32,20 @@ namespace Lemonade_Stand_System.Middleware
                 {
                     case KeyNotFoundException e:
                        response.StatusCode = (int)HttpStatusCode.NotFound;
-                       responseModel.message = "Not Found";
-                        responseModel.errors?.Add(e.Message);
+                       responseModel.message = e.Message;
 
                         break;
                     case ValidationException e:
                         response.StatusCode = (int)HttpStatusCode.BadRequest;
-                        responseModel.message = "Validation errors";
+                        responseModel.message = e.Message;
                         break;
                     default:
 
                         break;
                 }
                 
-                        var result = JsonSerializer.Serialize(responseModel);
-                        await response.WriteAsync(result);
+                var result = JsonSerializer.Serialize(responseModel);
+               await response.WriteAsync(result);
             }
         }
 

@@ -24,6 +24,7 @@ namespace Models.ModelsResources
         public List<string>? errors { get; set; }
 
 
+
     }
 
 }
