@@ -13,7 +13,7 @@ namespace Data
         {
         }
 
-        public DbSet<ClientOrder> ClientOrders { get; set; }
+        public DbSet<Models.ClientOrder> ClientOrders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
 
         public DbSet<Product> Products { get; set; }
@@ -28,7 +28,7 @@ namespace Data
         {
 
             //-----Keys 
-            modelBuilder.Entity<ClientOrder>().HasKey(co => co.id);
+            modelBuilder.Entity<Models.ClientOrder>().HasKey(co => co.id);
             modelBuilder.Entity<OrderDetail>().HasKey(od => od.id);
             modelBuilder.Entity<Product>().HasKey(p => p.id);
             modelBuilder.Entity<ProductType>().HasKey(p => p.id);
@@ -36,7 +36,7 @@ namespace Data
             modelBuilder.Entity<SuppliesOrder>().HasKey(so => so.id);
 
             //------------ Relationship
-            modelBuilder.Entity<ClientOrder>().HasMany(co => co.orderDetails)
+            modelBuilder.Entity<Models.ClientOrder>().HasMany(co => co.orderDetails)
                 .WithOne(co => co.clientOrder)
                 .HasForeignKey(od => od.order);
 
@@ -68,7 +68,7 @@ namespace Data
                .Property(p => p.id)
                .ValueGeneratedOnAdd();
 
-            modelBuilder.Entity<ClientOrder>()
+            modelBuilder.Entity<Models.ClientOrder>()
                .Property(p => p.id)
                .ValueGeneratedOnAdd();
 

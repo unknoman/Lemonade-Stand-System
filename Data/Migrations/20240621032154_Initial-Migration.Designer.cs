@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(LemonadeDbContext))]
-    [Migration("20240314064251_InitialMigration")]
+    [Migration("20240621032154_Initial-Migration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -49,7 +49,7 @@ namespace Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
-                    b.Property<int>("order")
+                    b.Property<int?>("order")
                         .HasColumnType("int");
 
                     b.Property<int>("product")
@@ -58,7 +58,7 @@ namespace Data.Migrations
                     b.Property<float>("quantity")
                         .HasColumnType("real");
 
-                    b.Property<int>("supplies")
+                    b.Property<int?>("supplies")
                         .HasColumnType("int");
 
                     b.Property<float>("unityPrice")
@@ -174,9 +174,7 @@ namespace Data.Migrations
                 {
                     b.HasOne("Models.ClientOrder", "clientOrder")
                         .WithMany("orderDetails")
-                        .HasForeignKey("order")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("order");
 
                     b.HasOne("Models.Product", "oProduct")
                         .WithMany("orderDetails")
@@ -186,9 +184,7 @@ namespace Data.Migrations
 
                     b.HasOne("Models.SuppliesOrder", "suppliesOrder")
                         .WithMany("oDetail")
-                        .HasForeignKey("supplies")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("supplies");
 
                     b.Navigation("clientOrder");
 

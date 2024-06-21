@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Data.Interfaces
 {
-    public interface IDataGeneric<T> where T  : class
+    public interface IData<T> 
     {
-        Task<List<T>> getList();
+       public Task<List<T>> getList();
 
-        Task<T?> postObject(T oObject);
+        public Task<int?> postObject(T oObject);
 
-        Task<T?> getObjectType(int oType);
+        public Task<T?> getObjectType(int oType);
 
     }
 }

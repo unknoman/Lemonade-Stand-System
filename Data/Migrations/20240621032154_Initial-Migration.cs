@@ -103,9 +103,9 @@ namespace Data.Migrations
                 {
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    order = table.Column<int>(type: "int", nullable: false),
+                    order = table.Column<int>(type: "int", nullable: true),
                     product = table.Column<int>(type: "int", nullable: false),
-                    supplies = table.Column<int>(type: "int", nullable: false),
+                    supplies = table.Column<int>(type: "int", nullable: true),
                     unityPrice = table.Column<float>(type: "real", nullable: false),
                     quantity = table.Column<float>(type: "real", nullable: false)
                 },
@@ -116,8 +116,7 @@ namespace Data.Migrations
                         name: "FK_OrderDetails_ClientOrders_order",
                         column: x => x.order,
                         principalTable: "ClientOrders",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "id");
                     table.ForeignKey(
                         name: "FK_OrderDetails_Products_product",
                         column: x => x.product,
@@ -128,8 +127,7 @@ namespace Data.Migrations
                         name: "FK_OrderDetails_SuppliesOrders_supplies",
                         column: x => x.supplies,
                         principalTable: "SuppliesOrders",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "id");
                 });
 
             migrationBuilder.CreateIndex(

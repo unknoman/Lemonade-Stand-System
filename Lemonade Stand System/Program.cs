@@ -62,7 +62,7 @@ builder.Services.AddControllers().AddJsonOptions(x =>
 // Registered services 
 builder.Services.AddScoped<ProductData>();
 builder.Services.AddScoped<ProductBusiness>();
-builder.Services.AddScoped(typeof(IDataGeneric<>), typeof(DataGeneric<>));
+builder.Services.AddScoped<IData<ClientOrder>, ClientData>();
 builder.Services.AddScoped<ClientBusiness>();
 builder.Services.AddSingleton<IMapper>(mapper);
 //---------------

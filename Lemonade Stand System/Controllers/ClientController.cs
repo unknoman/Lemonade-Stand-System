@@ -16,17 +16,23 @@ namespace Lemonade_Stand_System.Controllers
             _clientBusiness = clientBusiness;   
         }
 
-        [HttpPost("ClientGet", Name = "clientGet")]
+        [HttpGet("ClientGet", Name = "clientGet")]
         public async Task<List<ClientOrderGetDTO>> GetClientOrder()
         {
             return await _clientBusiness.getClientOrder();
         }
 
-        [HttpPost("ClientGetID", Name = "clientGetID")]
+        [HttpGet("ClientGetID", Name = "clientGetID")]
         public async Task<ClientOrderGetDTO> GetClientOrder(int id)
         {
             return await _clientBusiness.getClientOrder(id);
         }
 
+
+        [HttpPost("ClientOrder", Name = "ClientOrder")]
+        public async Task<int?> postClientOrder(ClientOrderPostDTO clientOrderDTO)
+        {
+           return await _clientBusiness.postClientOrder(clientOrderDTO);
+        }
     }
 }

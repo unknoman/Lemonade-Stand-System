@@ -24,6 +24,17 @@ namespace Data
 
         }
 
+        public async void updateProduct(Product product)
+        {
+             _lemonadeDbContext.Products.Update(product);
+            await _lemonadeDbContext.SaveChangesAsync();
+        }
+
+        public async Task<Product?> getProductId(int id)
+        {
+            return await _lemonadeDbContext.Products.FindAsync(id);
+        }
+
 
         public async Task<Product?> postProduct(Product product)
         
