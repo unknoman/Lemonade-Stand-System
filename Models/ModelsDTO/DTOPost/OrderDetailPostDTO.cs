@@ -13,6 +13,5 @@ namespace Models.ModelsDTO.DTOPost
         public float unityPrice { get; set; }
         public float quantity { get; set; }
 
-
     }
 }

@@ -52,8 +52,6 @@ namespace Business
                 Product? product = await _dbProduct.getProductId(order.product);
                 if(product != null)
                 product.stock = product.stock - order.quantity;
-
-
             }
 
           ClientOrder? client = _mapper.Map<ClientOrder>(clientOrderDTO);

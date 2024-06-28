@@ -63,7 +63,11 @@ builder.Services.AddControllers().AddJsonOptions(x =>
 builder.Services.AddScoped<ProductData>();
 builder.Services.AddScoped<ProductBusiness>();
 builder.Services.AddScoped<IData<ClientOrder>, ClientData>();
+builder.Services.AddScoped<IData<SuppliesOrder>, SuppliesData>();
 builder.Services.AddScoped<ClientBusiness>();
+builder.Services.AddScoped<SupplierData>();
+builder.Services.AddScoped<SupplierBusiness>();
+builder.Services.AddScoped<SuppliesBusiness>();
 builder.Services.AddSingleton<IMapper>(mapper);
 //---------------
 

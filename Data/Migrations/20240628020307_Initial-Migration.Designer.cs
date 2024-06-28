@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(LemonadeDbContext))]
-    [Migration("20240621032154_Initial-Migration")]
+    [Migration("20240628020307_Initial-Migration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -158,7 +158,7 @@ namespace Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
                     b.Property<DateTime>("date")
-                        .HasColumnType("date");
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("supplier")
                         .HasColumnType("int");

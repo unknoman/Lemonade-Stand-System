@@ -84,7 +84,7 @@ namespace Data.Migrations
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     supplier = table.Column<int>(type: "int", nullable: false),
-                    date = table.Column<DateTime>(type: "date", nullable: false)
+                    date = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -21,6 +21,7 @@ namespace Business.Resources
             CreateMap<ProductPostDTO, Product>().ReverseMap();
             CreateMap<ClientOrderPostDTO, ClientOrder>().ReverseMap();
             CreateMap<OrderDetail, OrderDetailPostDTO>().ReverseMap();
+            CreateMap<SuppliesOrder, SuppliesOrderPostDTO>().ReverseMap();
         }
         
     }

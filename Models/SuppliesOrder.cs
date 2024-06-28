@@ -6,7 +6,7 @@ namespace Models
         public int id { get; set; }
         public int supplier { get; set; }
 
-        public DateOnly date { get; set; }
+        public DateTime date { get; set; }
 
         public List<OrderDetail>? oDetail { get; set; }
 
